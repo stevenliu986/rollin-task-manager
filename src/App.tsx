@@ -2,8 +2,11 @@ import { Flex } from 'antd';
 import splashPageImg from './assets/images/amico.png';
 import PrimaryButton from './components/button/PrimaryButton';
 import PrimaryTitle from './components/title/PrimaryTitle';
+import { useNavigate } from 'react-router';
 
 function App() {
+
+  const navigate = useNavigate();
 
   return (
     <Flex
@@ -32,7 +35,7 @@ function App() {
       <PrimaryTitle>
         Stay on top of tasks, stress-free
       </PrimaryTitle>
-      <PrimaryButton>
+      <PrimaryButton onClick={() => navigate('/taskList')}>
         Get started
       </PrimaryButton>
     </Flex>
