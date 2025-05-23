@@ -1,50 +1,91 @@
-# React + TypeScript + Vite
+# ROLLiN Mini Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Screen Shots
 
-Currently, two official plugins are available:
+![Project Screenshot](src\assets\images\task-list.png) ![Project Screenshot](src\assets\images\task-complted.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Brief Explanation of Design Decisions
 
-## Expanding the ESLint configuration
+1. Component Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+    - Split into small, reusable components (Task, TaskHeader, PrimaryButton) for better maintainability.
+    - Container components (like TaskList) manage state, while presentational components focus on UI.
+    - All components use TypeScript interfaces (ITask, ITaskProps) for strict props validation.
 
-- Configure the top-level `parserOptions` property like this:
+2. State Management
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+    - Local State: Used useState for UI-specific state (tabs, loading states)
+    - Derived State: Computed filteredTasks from source state to avoid redundant storage.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. Performance Optimizations
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+    - Memoization: React.memo on frequently re-rendered components (e.g., Task).
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+4. UI/UX Choices
+
+    - Ant Design: Leveraged for consistent, accessible, and responsive components.
+
+5. TypeScript Adoption
+
+    - Utility Types: Used `Readonly<T>` for props to prevent accidental mutations.
+    - Event Typing: Properly typed Ant Design events (**CheckboxChangeEvent**).
+
+6. Tradeoffs
+    - No State Library: Chose `useState` over Redux/Zustand due to simpler requirements.
+    - Basic Error Handling: Logged errors to console.
+
+## Features
+
+-   ✅ Create, read, update, and delete tasks
+-   📅 Set due dates for tasks
+-   🏷️ Categorize tasks as "In Progress" or "Completed"
+-   🔍 Filter tasks by status
+
+## Technologies Used
+
+-   **Frontend**:
+    -   React 18
+    -   TypeScript
+    -   Ant Design (UI Library)
+    -   React Router (Navigation)
+    -   Day.js (Date handling)
+-   **Testing**:
+    -   Vitest (Test runner)
+    -   React Testing Library
+-   **Build Tool**: Vite
+
+## Installation
+
+1.  Clone the repository:
+
+    ```bash
+    git clone https://github.com/stevenliu986/rollin-task-manager.git
+    ```
+
+2.  Install dependencies:
+
+    ```bash
+    cd rollin-task-manager
+    npm install
+    ```
+
+3.  Start the backend service (task-api provided)
+4.  Start the development server:
+
+    ```bash
+     npm run dev
+    ```
+
+5.  Testing - I use Vitest and React Testing Library for comprehensive testing:
+
+        ```bash
+        npm test
+        ```
+
+**Note:** The Figma design file provided is based on a mobile interface. For accurate testing, please set your browser viewport to simulate a **Mobile** (eg: an iPhone 14 Pro Max) during development and testing.
+
+## Code Quality
+
+-   TypeScript for type safety
+-   ESLint for code linting
+-   Prettier for code formatting
