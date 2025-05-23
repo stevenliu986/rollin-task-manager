@@ -5,7 +5,7 @@ interface IPrimaryTitleProps extends React.ComponentProps<typeof Typography.Titl
     children: React.ReactNode;
 }
 
-const defaultStyle: React.CSSProperties = {
+const DEFAULT_STYLE: React.CSSProperties = {
     textTransform: 'uppercase',
     fontSize: '2rem',
     fontWeight: 700,
@@ -20,9 +20,7 @@ export default function PrimaryTitle({
     children, style, ...props
 }: Readonly<IPrimaryTitleProps>) {
 
-    const mergedStyle: React.CSSProperties = {
-        ...defaultStyle, ...style
-    }
+    const mergedStyle = { ...DEFAULT_STYLE, ...style };
     return (
         <Typography.Title
             level={1}

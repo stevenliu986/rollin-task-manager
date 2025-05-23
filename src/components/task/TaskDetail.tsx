@@ -8,6 +8,24 @@ interface ITaskDetailProps {
 }
 
 const TaskDetail: React.FC<ITaskDetailProps> = ({ taskDetail }) => {
+    const TITLE_STYLE = {
+        margin: 0,
+        color: '#FFF',
+        fontSize: '1rem',
+        fontWeight: 600,
+        flex: 1,
+        textDecoration: taskDetail.complete ? 'line-through' : 'none',
+        opacity: taskDetail.complete ? 0.7 : 1
+    };
+
+    const PARAGRAPH_STYLE = {
+        marginBottom: '24px',
+        color: '#FFF',
+        fontSize: '0.875rem',
+        fontWeight: 400,
+        textDecoration: taskDetail.complete ? 'line-through' : 'none',
+        opacity: taskDetail.complete ? 0.7 : 1,
+    }
 
     return (<Flex
         vertical
@@ -19,28 +37,13 @@ const TaskDetail: React.FC<ITaskDetailProps> = ({ taskDetail }) => {
     >
         <Title
             level={4}
-            style={{
-                margin: 0,
-                color: '#FFF',
-                fontSize: '1rem',
-                fontWeight: 600,
-                flex: 1,
-                textDecoration: taskDetail.complete ? 'line-through' : 'none',
-                opacity: taskDetail.complete ? 0.7 : 1
-            }}
+            style={TITLE_STYLE}
         >
             {taskDetail.title}
         </Title>
         <Paragraph
             type="secondary"
-            style={{
-                marginBottom: '24px',
-                color: '#FFF',
-                fontSize: '0.875rem',
-                fontWeight: 400,
-                textDecoration: taskDetail.complete ? 'line-through' : 'none',
-                opacity: taskDetail.complete ? 0.7 : 1,
-            }}
+            style={PARAGRAPH_STYLE}
         >
             {taskDetail.description}
         </Paragraph>

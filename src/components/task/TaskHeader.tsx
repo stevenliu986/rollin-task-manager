@@ -2,7 +2,11 @@ import { Button } from "antd";
 import leadingIcon from '../../assets/images/Leading Icon.png'
 import type { ITask } from "./AddTask";
 
-export default function TaskHeader({ taskDetail }: ITask) {
+interface ITaskHeaderProps {
+    taskDetail: ITask;
+}
+
+export default function TaskHeader({ taskDetail }: Readonly<ITaskHeaderProps>) {
     const due = taskDetail.due?.slice(0, -5)
 
     return (<div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>

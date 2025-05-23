@@ -15,20 +15,51 @@ export interface ITask {
     due?: string;
 }
 
+const FORM_ITEM_STYLE: React.CSSProperties = {
+    height: '56px',
+    fontSize: '1rem',
+    border: '2px solid #252525',
+    borderRadius: '1rem'
+};
+
+const TEXTAREA_STYLE = {
+    ...FORM_ITEM_STYLE,
+    rows: 4
+};
+
+const CALENDAR_ICON_STYLE: React.CSSProperties = {
+    position: 'absolute',
+    right: -36,
+    top: -17,
+    display: 'flex',
+    alignItems: 'center',
+    borderLeft: '2px solid #252525',
+    height: '56px',
+    width: '56px',
+};
+
+const ICON_IMAGE_STYLE: React.CSSProperties = {
+    width: '24px',
+    height: '24px',
+    marginLeft: '17px',
+};
+
+const formatTaskData = (values: ITask): ITask => ({
+    created: dayjs().format('DD/MM/YYYY'),
+    title: values.title,
+    description: values.description,
+    complete: false,
+    ...(values.due && { due: dayjs(values.due).format('DD/MM/YYYY') })
+});
+
 export default function AddTask() {
     const [form] = Form.useForm();
     const navigate = useNavigate();
 
     const onFinish = async (values: ITask) => {
-        const taskData: ITask = {
-            created: dayjs().format('DD/MM/YYYY'),
-            title: values.title,
-            description: values.description,
-            complete: false,
-            ...(values.due && { due: dayjs(values.due).format('DD/MM/YYYY') })
-        };
 
         try {
+            const taskData = formatTaskData(values);
             await post('/tasks', taskData);
             navigate('/taskList');
         } catch (error) {
@@ -64,12 +95,7 @@ export default function AddTask() {
                 >
                     <Input
                         placeholder="Task name"
-                        style={{
-                            height: '56px',
-                            fontSize: '1rem',
-                            border: '2px solid #252525',
-                            borderRadius: '1rem'
-                        }}
+                        style={FORM_ITEM_STYLE}
                     />
                 </Form.Item>
 
@@ -79,32 +105,16 @@ export default function AddTask() {
                 >
                     <DatePicker
                         style={{
-                            width: '100%',
-                            height: '56px',
-                            fontSize: '1rem',
-                            border: '2px solid #252525',
-                            borderRadius: '1rem',
+                            ...FORM_ITEM_STYLE,
                             paddingRight: '40px',
+                            width: '100%'
                         }}
                         suffixIcon={
-                            <div style={{
-                                position: 'absolute',
-                                right: -36,
-                                top: -17,
-                                display: 'flex',
-                                alignItems: 'center',
-                                borderLeft: '2px solid #252525',
-                                height: '56px',
-                                width: '56px',
-                            }}>
+                            <div style={CALENDAR_ICON_STYLE}>
                                 <img
                                     src={calendarIcon}
                                     alt="calendar-icon"
-                                    style={{
-                                        width: '24px',
-                                        height: '24px',
-                                        marginLeft: '17px',
-                                    }}
+                                    style={ICON_IMAGE_STYLE}
                                 />
                             </div>
                         }
@@ -123,7 +133,7 @@ export default function AddTask() {
                     <Input.TextArea
                         rows={4}
                         placeholder="Your message"
-                        style={{ fontSize: '1rem', border: '2px solid #252525', borderRadius: '1rem' }}
+                        style={TEXTAREA_STYLE}
                     />
                 </Form.Item>
 

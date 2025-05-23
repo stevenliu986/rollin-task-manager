@@ -6,23 +6,52 @@ import TaskDetail from './TaskDetail';
 import deleteIcon from '../../assets/images/Delete Icon.png';
 import type { ITask } from './AddTask';
 import './task.css';
+import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 
 interface ITaskProps {
-    taskDetail: ITask;
-    onDelete?: () => void;
-    onToggle?: (checked: boolean) => void;
+    taskDetail: Readonly<ITask>;
+    onDelete?: () => Promise<void> | void;
+    onToggle?: (checked: boolean) => Promise<void> | void;
 }
+
+const CARD_STYLE: React.CSSProperties = {
+    width: '100%',
+    maxWidth: 500,
+    margin: '16px auto',
+    backgroundColor: '#252525',
+    position: 'relative',
+    borderRadius: '16px'
+};
+
+const LOADER_STYLE: React.CSSProperties = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    zIndex: 1
+};
+
+const DIVIDER_STYLE: React.CSSProperties = {
+    margin: '12px 0',
+    backgroundColor: '#767676',
+    height: '2px'
+};
 
 const Task: React.FC<ITaskProps> = ({
     taskDetail,
     onDelete,
     onToggle
 }) => {
-    const [taskStatus, setTaskStatus] = useState(taskDetail.complete);
-    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [taskStatus, setTaskStatus] = useState<boolean>(taskDetail.complete);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
 
-    const handleCheckBoxChange = async (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const handleCheckBoxChange = async (evt: CheckboxChangeEvent) => {
         const newStatus = evt.target.checked;
         setTaskStatus(newStatus);
         try {
@@ -34,39 +63,15 @@ const Task: React.FC<ITaskProps> = ({
     };
 
     return (
-        <Card
-            style={{
-                width: '100%',
-                maxWidth: 500,
-                margin: '16px auto',
-                backgroundColor: '#252525',
-                position: 'relative',
-                borderRadius: '16px'
-            }}
-        >
+        <Card style={CARD_STYLE}>
             {loading && (
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: 'rgba(0,0,0,0.5)',
-                    zIndex: 1
-                }}>
+                <div style={LOADER_STYLE}>
                     <Spin size="large" />
                 </div>
             )}
 
             <TaskHeader taskDetail={{ ...taskDetail, complete: taskStatus }} />
-            <Divider style={{
-                margin: '12px 0',
-                backgroundColor: '#767676',
-                height: '2px',
-            }} />
+            <Divider style={DIVIDER_STYLE} />
 
             <Flex style={{ alignItems: 'flex-start' }}>
                 <Checkbox
@@ -77,12 +82,14 @@ const Task: React.FC<ITaskProps> = ({
                     style={{
                         marginRight: '12px',
                     }}
+                    aria-label={taskStatus ? "Mark task as incomplete" : "Mark task as complete"}
                 />
                 <TaskDetail taskDetail={taskDetail} />
                 <Button
                     type="text"
                     onClick={() => setIsDeleteModalOpen(true)}
                     disabled={loading}
+                    aria-label="Delete task"
                 >
                     <img src={deleteIcon} alt="delete icon" />
                 </Button>
@@ -124,6 +131,7 @@ const Task: React.FC<ITaskProps> = ({
                                 fontSize: '0.875rem',
                                 margin: 0
                             }}
+                            aria-label="Cancel task deletion"
                         >
                             Go back
                         </PrimaryButton>
@@ -140,6 +148,7 @@ const Task: React.FC<ITaskProps> = ({
                                 fontSize: '0.875rem',
                                 margin: 0
                             }}
+                            aria-label="Confirm task deletion"
                         >
                             Yes, delete
                         </PrimaryButton>
@@ -164,6 +173,7 @@ const Task: React.FC<ITaskProps> = ({
                         fontSize: '1rem',
                     }}
                     disabled={loading}
+                    aria-label="Manage task details"
                 >
                     Manage task
                 </PrimaryButton>
@@ -172,4 +182,4 @@ const Task: React.FC<ITaskProps> = ({
     );
 };
 
-export default Task;
+export default React.memo(Task);
