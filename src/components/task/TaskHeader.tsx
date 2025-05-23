@@ -1,7 +1,9 @@
 import { Button } from "antd";
 import leadingIcon from '../../assets/images/Leading Icon.png'
+import type { ITask } from "./AddTask";
 
-export default function TaskHeader() {
+export default function TaskHeader({ taskDetail }: ITask) {
+    const due = taskDetail.due?.slice(0, -5)
 
     return (<div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
 
@@ -9,8 +11,8 @@ export default function TaskHeader() {
             type="default"
             size="small"
             style={{
-                backgroundColor: '#196BE5',
-                border: '#196BE5',
+                backgroundColor: taskDetail.complete ? '#11a436' : '#196BE5',
+                border: `1px solid ${taskDetail.complete ? '#11a436' : '#196BE5'}`,
                 borderRadius: '25px',
                 padding: '0 8px',
                 display: 'flex',
@@ -18,7 +20,7 @@ export default function TaskHeader() {
             }}
         >
             <span style={{ fontSize: '0.875rem', color: '#FFF' }}>
-                In Progress
+                {taskDetail.complete ? 'Completed' : 'In Progress'}
             </span>
         </Button>
         <Button
@@ -34,7 +36,7 @@ export default function TaskHeader() {
         >
             <img src={leadingIcon} alt="leading-icon" />
             <span style={{ fontSize: '0.875rem' }}>
-                01/05
+                {due}
             </span>
         </Button>
     </div>)

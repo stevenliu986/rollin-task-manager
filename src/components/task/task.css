@@ -1,0 +1,18 @@
+.circle-checkbox .ant-checkbox-inner {
+    border-radius: 50% !important;
+    width: 28px !important;
+    height: 28px !important;
+}
+
+.circle-checkbox .ant-checkbox-inner::after {
+    left: 50% !important;
+    top: 50% !important;
+    width: 8px !important;
+    height: 14px !important;
+    transform: translate(-50%, -50%) scale(1.1) rotate(45deg);
+}
+
+.circle-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #11a436 !important;
+    border-color: #11a436 !important;
+}
