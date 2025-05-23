@@ -78,9 +78,9 @@
 
 5.  Testing - I use Vitest and React Testing Library for comprehensive testing:
 
-        ```bash
-        npm test
-        ```
+    ```bash
+    npm test
+    ```
 
 **Note:** The Figma design file provided is based on a mobile interface. For accurate testing, please set your browser viewport to simulate a **Mobile** (eg: an iPhone 14 Pro Max) during development and testing.
 
