@@ -1,7 +1,5 @@
-import axios, {
-    AxiosInstance,
-    AxiosRequestConfig,
-} from 'axios';
+import axios from 'axios';
+import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 interface BaseResponse<T = any> {
     code: number;
