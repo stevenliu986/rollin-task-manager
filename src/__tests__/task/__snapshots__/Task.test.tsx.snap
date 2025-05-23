@@ -1,0 +1,102 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Task Component > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-card ant-card-bordered css-dev-only-do-not-override-vrrzze"
+    style="width: 100%; max-width: 500px; margin: 16px auto; background-color: rgb(37, 37, 37); position: relative; border-radius: 16px;"
+  >
+    <div
+      class="ant-card-body"
+    >
+      <div
+        style="display: flex; justify-content: space-between; margin-bottom: 16px;"
+      >
+        <button
+          class="ant-btn css-dev-only-do-not-override-vrrzze ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm"
+          style="background-color: rgb(25, 107, 229); border: 1px solid rgb(25, 107, 229); border-radius: 25px; padding: 0px 8px; display: flex; align-items: center;"
+          type="button"
+        >
+          <span
+            style="font-size: 0.875rem; color: rgb(255, 255, 255);"
+          >
+            In Progress
+          </span>
+        </button>
+        <button
+          class="ant-btn css-dev-only-do-not-override-vrrzze ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm"
+          style="background-color: rgb(245, 245, 245); border-radius: 25px; padding: 0px 8px; display: flex; align-items: center;"
+          type="button"
+        >
+          <img
+            alt="leading-icon"
+            src="/src/assets/images/Leading%20Icon.png"
+          />
+          <span
+            style="font-size: 0.875rem;"
+          >
+            2023-
+          </span>
+        </button>
+      </div>
+      <div
+        class="ant-divider css-dev-only-do-not-override-vrrzze ant-divider-horizontal"
+        role="separator"
+        style="margin: 12px 0px; background-color: rgb(118, 118, 118); height: 2px;"
+      />
+      <div
+        class="ant-flex css-dev-only-do-not-override-vrrzze"
+        style="align-items: flex-start;"
+      >
+        <input
+          aria-label="Mark task as complete"
+          class="circle-checkbox"
+          style="margin-right: 12px;"
+          type="checkbox"
+        />
+        <div
+          class="ant-flex css-dev-only-do-not-override-vrrzze ant-flex-align-stretch ant-flex-justify-center ant-flex-vertical"
+          style="width: 230px; height: 63px;"
+        >
+          <h4
+            class="ant-typography css-dev-only-do-not-override-vrrzze"
+            style="margin: 0px; color: rgb(255, 255, 255); font-size: 1rem; font-weight: 600; flex: 1; text-decoration: none; opacity: 1;"
+          >
+            Test Task
+          </h4>
+          <div
+            class="ant-typography ant-typography-secondary css-dev-only-do-not-override-vrrzze"
+            style="margin-bottom: 24px; color: rgb(255, 255, 255); font-size: 0.875rem; font-weight: 400; text-decoration: none; opacity: 1;"
+          >
+            Test Description
+          </div>
+        </div>
+        <button
+          aria-label="Delete task"
+          class="ant-btn css-dev-only-do-not-override-vrrzze ant-btn-text ant-btn-color-default ant-btn-variant-text"
+          type="button"
+        >
+          <img
+            alt="delete icon"
+            src="/src/assets/images/Delete%20Icon.png"
+          />
+        </button>
+      </div>
+      <div
+        style="display: flex; justify-content: center; width: 100%; margin-top: 16px;"
+      >
+        <button
+          aria-label="Manage task details"
+          class="ant-btn css-dev-only-do-not-override-vrrzze ant-btn-default ant-btn-color-default ant-btn-variant-outlined"
+          style="width: 263px; height: 40px; font-size: 1rem; font-weight: 700; background-color: rgb(255, 255, 255); border-radius: 28px;"
+          type="button"
+        >
+          <span>
+            Manage task
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

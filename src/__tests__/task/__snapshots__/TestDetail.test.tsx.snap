@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TaskDetail Component > matches snapshot for completed task 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-flex css-dev-only-do-not-override-vrrzze"
+  >
+    <div
+      class="ant-flex css-dev-only-do-not-override-vrrzze ant-flex-align-stretch ant-flex-justify-center ant-flex-vertical"
+      style="width: 230px; height: 63px;"
+    >
+      <div
+        data-testid="task-title"
+        style="margin: 0px; color: rgb(255, 255, 255); font-size: 1rem; font-weight: 600; flex: 1; text-decoration: line-through; opacity: 0.7;"
+      >
+        Test Task
+      </div>
+      <div
+        data-testid="task-description"
+        style="margin-bottom: 24px; color: rgb(255, 255, 255); font-size: 0.875rem; font-weight: 400; text-decoration: line-through; opacity: 0.7;"
+      >
+        Test Description
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TaskDetail Component > matches snapshot for incomplete task 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-flex css-dev-only-do-not-override-vrrzze"
+  >
+    <div
+      class="ant-flex css-dev-only-do-not-override-vrrzze ant-flex-align-stretch ant-flex-justify-center ant-flex-vertical"
+      style="width: 230px; height: 63px;"
+    >
+      <div
+        data-testid="task-title"
+        style="margin: 0px; color: rgb(255, 255, 255); font-size: 1rem; font-weight: 600; flex: 1; text-decoration: none; opacity: 1;"
+      >
+        Test Task
+      </div>
+      <div
+        data-testid="task-description"
+        style="margin-bottom: 24px; color: rgb(255, 255, 255); font-size: 0.875rem; font-weight: 400; text-decoration: none; opacity: 1;"
+      >
+        Test Description
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

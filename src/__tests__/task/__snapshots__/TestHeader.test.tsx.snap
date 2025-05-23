@@ -1,0 +1,71 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TaskHeader Component > matches snapshot for completed task without due date 1`] = `
+<DocumentFragment>
+  <div
+    style="display: flex; justify-content: space-between; margin-bottom: 16px;"
+  >
+    <button
+      data-testid="ant-button"
+      style="background-color: rgb(17, 164, 54); border: 1px solid rgb(17, 164, 54); border-radius: 25px; padding: 0px 8px; display: flex; align-items: center;"
+      type="default"
+    >
+      <span
+        style="font-size: 0.875rem; color: rgb(255, 255, 255);"
+      >
+        Completed
+      </span>
+    </button>
+    <button
+      data-testid="ant-button"
+      style="background-color: rgb(245, 245, 245); border-radius: 25px; padding: 0px 8px; display: flex; align-items: center;"
+      type="default"
+    >
+      <img
+        alt="leading-icon"
+        src="test-leading-icon.png"
+      />
+      <span
+        style="font-size: 0.875rem;"
+      >
+        2023-12-31T00:00:00
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TaskHeader Component > matches snapshot for incomplete task with due date 1`] = `
+<DocumentFragment>
+  <div
+    style="display: flex; justify-content: space-between; margin-bottom: 16px;"
+  >
+    <button
+      data-testid="ant-button"
+      style="background-color: rgb(25, 107, 229); border: 1px solid rgb(25, 107, 229); border-radius: 25px; padding: 0px 8px; display: flex; align-items: center;"
+      type="default"
+    >
+      <span
+        style="font-size: 0.875rem; color: rgb(255, 255, 255);"
+      >
+        In Progress
+      </span>
+    </button>
+    <button
+      data-testid="ant-button"
+      style="background-color: rgb(245, 245, 245); border-radius: 25px; padding: 0px 8px; display: flex; align-items: center;"
+      type="default"
+    >
+      <img
+        alt="leading-icon"
+        src="test-leading-icon.png"
+      />
+      <span
+        style="font-size: 0.875rem;"
+      >
+        2023-12-31T00:00:00
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;
