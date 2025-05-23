@@ -2,12 +2,38 @@ import { Input, Form, DatePicker, Flex } from "antd";
 import PrimaryButton from "../button/PrimaryButton";
 import PrimaryTitle from '../title/PrimaryTitle';
 import calendarIcon from '../../assets/images/calendarIcon.png'
+import { useNavigate } from "react-router";
+import { post } from '../../utils/httpClient'
+import dayjs from 'dayjs';
+
+export interface ITask {
+    id?: number,
+    created: string;
+    title: string;
+    description: string;
+    complete: boolean;
+    due?: string;
+}
 
 export default function AddTask() {
     const [form] = Form.useForm();
+    const navigate = useNavigate();
 
-    const onFinish = (values: any) => {
-        console.log(values)
+    const onFinish = async (values: ITask) => {
+        const taskData: ITask = {
+            created: dayjs().format('DD/MM/YYYY'),
+            title: values.title,
+            description: values.description,
+            complete: false,
+            ...(values.due && { due: dayjs(values.due).format('DD/MM/YYYY') })
+        };
+
+        try {
+            await post('/tasks', taskData);
+            navigate('/taskList');
+        } catch (error) {
+            console.error('Error creating task:', error);
+        }
     };
 
     return (
