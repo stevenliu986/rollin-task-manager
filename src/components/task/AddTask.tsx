@@ -7,7 +7,7 @@ import { post } from '../../utils/httpClient'
 import dayjs from 'dayjs';
 
 export interface ITask {
-    id?: number,
+    id: number,
     created: string;
     title: string;
     description: string;
