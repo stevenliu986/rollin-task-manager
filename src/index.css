@@ -1,0 +1,41 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: clamp(12px, calc(100vw / 375 * 16), 20px);
+  --ant-font-family: "Karla", sans-serif;
+}
+
+body {
+  font-family: var(--ant-font-family);
+  color: #252525;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.ant-btn,
+.ant-input,
+.ant-menu-item,
+.ant-typography {
+  font-family: var(--ant-font-family) !important;
+}
