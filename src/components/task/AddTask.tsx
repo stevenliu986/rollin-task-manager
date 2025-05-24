@@ -6,12 +6,11 @@ import { useNavigate } from "react-router";
 import { post } from '../../utils/httpClient'
 import dayjs from 'dayjs';
 
-export interface ITask {
-    id: number,
-    created: string;
+export interface ICreateTask {
     title: string;
     description: string;
     complete: boolean;
+    created: string;
     due?: string;
 }
 
@@ -44,7 +43,7 @@ const ICON_IMAGE_STYLE: React.CSSProperties = {
     marginLeft: '17px',
 };
 
-const formatTaskData = (values: ITask): ITask => ({
+const formatTaskData = (values: ICreateTask): ICreateTask => ({
     created: dayjs().format('DD/MM/YYYY'),
     title: values.title,
     description: values.description,
@@ -56,12 +55,12 @@ export default function AddTask() {
     const [form] = Form.useForm();
     const navigate = useNavigate();
 
-    const onFinish = async (values: ITask) => {
+    const onFinish = async (values: ICreateTask) => {
 
         try {
             const taskData = formatTaskData(values);
             await post('/tasks', taskData);
-            navigate('/taskList');
+            navigate('/tasks');
         } catch (error) {
             console.error('Error creating task:', error);
         }

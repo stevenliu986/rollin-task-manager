@@ -5,7 +5,11 @@ import PrimaryButton from '../button/PrimaryButton';
 import PrimaryTitle from '../title/PrimaryTitle';
 import TaskListHeader from './TaskListHeader';
 import Task from './Task';
-import type { ITask } from "./AddTask";
+import type { ICreateTask } from "./AddTask";
+
+interface ITask extends ICreateTask {
+    id: number;
+}
 
 export default function TaskList() {
     const [taskList, setTaskList] = useState<ITask[]>([]);
@@ -88,7 +92,7 @@ export default function TaskList() {
             )}
 
             <PrimaryButton
-                onClick={() => navigate('/addTask')}
+                onClick={() => navigate('/tasks/create')}
                 style={{ marginTop: '20px' }}
             >
                 Create a new task

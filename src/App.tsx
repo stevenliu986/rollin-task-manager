@@ -35,7 +35,7 @@ function App() {
       <PrimaryTitle>
         Stay on top of tasks, stress-free
       </PrimaryTitle>
-      <PrimaryButton onClick={() => navigate('/taskList')}>
+      <PrimaryButton onClick={() => navigate('/tasks')}>
         Get started
       </PrimaryButton>
     </Flex>
