@@ -4,7 +4,7 @@ import TaskHeader from './TaskHeader';
 import PrimaryButton from '../button/PrimaryButton';
 import TaskDetail from './TaskDetail';
 import deleteIcon from '../../assets/images/Delete Icon.png';
-import type { ITask } from './AddTask';
+import type { ITask } from './TaskList';
 import './task.css';
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 

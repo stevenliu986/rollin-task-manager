@@ -7,7 +7,7 @@ import TaskListHeader from './TaskListHeader';
 import Task from './Task';
 import type { ICreateTask } from "./AddTask";
 
-interface ITask extends ICreateTask {
+export interface ITask extends ICreateTask {
     id: number;
 }
 
